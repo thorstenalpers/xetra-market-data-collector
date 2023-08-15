@@ -32,7 +32,10 @@ public class CreateAssetRecordsConsumer : IConsumer<CreateAssetRecordsRequested>
         var msg = context.Message;
         _logger.LogInformation($"Starting {msg.GetType().Name} ... {JsonConvert.SerializeObject(msg)}");
 
-        if (msg.AssetIds == null || !msg.AssetIds.Any())
+        var isSymbolsEmpty = msg.Symbols == null || !msg.Symbols.Any();
+        var isAssetIdsEmpty = msg.AssetIds == null || !msg.AssetIds.Any();
+
+        if (isSymbolsEmpty && isAssetIdsEmpty)
         {
             var assets = await _assetRepository.ListAsync();
             var lsAssetIds = assets.Select(e => e.Id).ToList().SplitIntoBatches(100);
@@ -45,8 +48,16 @@ public class CreateAssetRecordsConsumer : IConsumer<CreateAssetRecordsRequested>
             _logger.LogInformation($"Created {lsAssetIds.Count} CreateAssetRecordsRequested events");
             return;
         }
-
-        await _assetRecordService.CreateRecords(msg.AssetIds, msg.StartDate, msg.EndDate);
+        if (!isAssetIdsEmpty)
+        {
+            await _assetRecordService.CreateRecords(msg.AssetIds, msg.StartDate, msg.EndDate);
+        }
+        else
+        {
+            var assets = await _assetRepository.ListAsync();
+            var assetIds = assets.Where(e => msg.Symbols.Contains(e.Symbol)).Select(e => e.Id).ToList();
+            await _assetRecordService.CreateRecords(assetIds, msg.StartDate, msg.EndDate);
+        }
         _logger.LogInformation($"Finished {msg.GetType().Name} ... {JsonConvert.SerializeObject(msg)}");
     }
 }

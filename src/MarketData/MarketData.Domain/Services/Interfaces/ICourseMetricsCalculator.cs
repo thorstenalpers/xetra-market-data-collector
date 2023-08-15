@@ -8,5 +8,5 @@ using System.Threading.Tasks;
 
 public interface ICourseMetricsCalculator
 {
-    Task<List<AssetRecord>> TransformToRecordsAsync(Asset asset, List<AssetCourse> courses, DateTime startDate);
+    List<AssetRecord> TransformToRecordsAsync(Asset asset, List<AssetCourse> courses, DateTime startDate);
 }

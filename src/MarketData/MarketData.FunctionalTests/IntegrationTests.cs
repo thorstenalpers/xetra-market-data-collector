@@ -7,6 +7,7 @@ using System.Linq.Dynamic.Core;
 using System.Threading.Tasks;
 using MarketData.API;
 using MarketData.API.Consumer;
+using MarketData.Application.Services.Interfaces;
 using MarketData.Domain.Entities;
 using MarketData.Domain.Repositories;
 using MarketData.Infratructure.Services;
@@ -45,13 +46,35 @@ public class IntegrationTests
 
         // Act
         var courses = await yahooApiClient.GetCourses(
-            "XD4.DE",
+            "SAP.DE",
             startDate,
             endDate);
 
         // Assert
         Assert.IsNotEmpty(courses);
         Assert.IsTrue(courses.All(e => e.Close > 10 && e.Close < 300));
+    }
+
+    [Test]
+    public async Task CreateRecords_Sap_Ok()
+    {
+        // Arrange
+        var service = _serviceProvider.GetService<IAssetRecordService>();
+        var repository = _serviceProvider.GetService<IRepository<Asset>>();
+        var assets = await repository.ListAsync();
+        var sapAsset = assets.First(e => e.Symbol == "SAP.DE");
+
+        DateTime startDate = DateTime.UtcNow.AddDays(-10).Date;
+        DateTime endDate = DateTime.UtcNow.Date;
+
+        // Act
+        await service.CreateRecords(
+            new List<int> { sapAsset.Id },
+            startDate,
+            endDate);
+
+        // Assert
+        Assert.Pass();
     }
 
     [Test]

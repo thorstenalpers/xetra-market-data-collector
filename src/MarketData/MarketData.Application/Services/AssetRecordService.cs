@@ -53,7 +53,7 @@ public class AssetRecordService : IAssetRecordService, IScopedService
             var courses = await _yahooWebScraper.GetCourses(asset.Symbol, startDate, endDate);
             if (courses == null || !courses.Any())
                 continue;
-            var records = await _courseMetricsCalculator.TransformToRecordsAsync(asset, courses, startDate);
+            var records = _courseMetricsCalculator.TransformToRecordsAsync(asset, courses, startDate);
             try
             {
                 var spec = new AssetRecordsAfterDateSpecification(asset.Id, startDate);
