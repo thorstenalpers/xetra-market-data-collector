@@ -3,6 +3,7 @@ using System;
 using MarketData.Infratructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MarketData.Infratructure.Migrations
 {
     [DbContext(typeof(MarketDataDbContext))]
-    partial class MarketDataDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230815052908_AddMetaData")]
+    partial class AddMetaData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -79,9 +82,6 @@ namespace MarketData.Infratructure.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("Url")
-                        .HasColumnType("text");
-
                     b.HasKey("Id");
 
                     b.HasIndex("Isin")
@@ -123,9 +123,15 @@ namespace MarketData.Infratructure.Migrations
                         },
                         new
                         {
-                            Id = 3,
+                            Id = 101,
                             CreatedAt = new DateTime(2023, 8, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Type = "Volumen"
+                            Type = "PriceDeltaPercentage_PriceCloseToPriceClose_1Day"
+                        },
+                        new
+                        {
+                            Id = 201,
+                            CreatedAt = new DateTime(2023, 8, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Type = "PriceDeltaPercentage_PriceOpenToPriceClose_1Day"
                         });
                 });
 
