@@ -59,7 +59,7 @@ public class Program
         {
             opt.SwaggerDoc("v1", new OpenApiInfo
             {
-                Title = "Backend",
+                Title = "Market Data Collector",
             });
             opt.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, $"{Assembly.GetExecutingAssembly().GetName().Name}.xml"));
             opt.UseInlineDefinitionsForEnums();
@@ -94,7 +94,7 @@ public class Program
         app.UseSwagger();
         app.UseSwaggerUI(config =>
         {
-            config.DocumentTitle = "TradeX";
+            config.DocumentTitle = "Market Data Collector";
         });
         app.UseCors(builder => builder
                 .AllowAnyHeader()
