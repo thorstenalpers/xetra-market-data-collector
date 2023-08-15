@@ -58,15 +58,6 @@ spec:
               port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
-          # volumeMounts:
-          #   - name: selenium-downloads
-          #     mountPath: /home/seluser/Downloads
-          # command: ["/bin/sh","-c"]
-          # args: ["command one; command two && command three"]
-          # lifecycle:
-          #   postStart:
-          #     exec:
-          #       command: ["/bin/sh", "-c", "sudo chmod -R 777 /home/seluser/Downloads"]
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

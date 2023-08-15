@@ -27,11 +27,6 @@ spec:
       serviceAccountName: {{ include "tradex-marketdataserviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
-      volumes:
-        - name: local-drive
-          hostPath:
-            path: /mnt/c/sources/tradex/fileshare
-            type: DirectoryOrCreate
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
@@ -51,9 +46,6 @@ spec:
               port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
-          volumeMounts:
-            - name: local-drive
-              mountPath: /mnt/local
       initContainers:
         - name: check-rabbitmq-ready
           image: busybox

@@ -111,15 +111,7 @@ extraConfigs: {}
 # -- Extra files to mount on `/app/pythonpath` as secrets
 extraSecrets: {}
 
-extraVolumes:
-  - name: favicon-drive
-    hostPath:
-      path: /mnt/c/sources/tradex/sonstiges/logos/spacex-favicon.png
-      type: File
-  - name: logo-drive
-    hostPath:
-      path: /mnt/c/sources/tradex/sonstiges/logos/spacex-horizontal.png
-      type: File      
+extraVolumes: []
   # - name: customConfig
   #   configMap:
   #     name: '{{ template "superset.fullname" . }}-custom-config'
@@ -128,14 +120,7 @@ extraVolumes:
   #     secretName: my-secret
   #     defaultMode: 0600
 
-extraVolumeMounts:
-  - name: favicon-drive
-    mountPath: /app/superset/static/assets/images/favicon.png
-  - name: logo-drive
-    mountPath: /app/superset/static/assets/images/superset.png
-  - name: logo-drive
-    mountPath: /app/superset/static/assets/images/superset-logo-horiz.png
-
+extraVolumeMounts: []
   # - name: customConfig
   #   mountPath: /mnt/config
   #   readOnly: true
