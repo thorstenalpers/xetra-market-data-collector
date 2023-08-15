@@ -1,0 +1,13 @@
+{
+	"profiles": {
+		"Start": {
+			"commandName": "Project",
+			"launchBrowser": false,
+			"environmentVariables": {
+				"ASPNETCORE_ENVIRONMENT": "development"
+			},
+			"hotReloadEnabled": false,
+			"applicationUrl": "http://localhost:7072"
+		}
+	}
+}

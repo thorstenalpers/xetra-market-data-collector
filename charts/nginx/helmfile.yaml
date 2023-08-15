@@ -1,0 +1,15 @@
+---
+bases:
+  - ../helmfile-values.yaml
+---
+releases:
+  - name: "ingress-nginx"
+    namespace: {{ .Values.Namespace }}
+    labels:
+      chart: "ingress-nginx"
+      repo: "ingress-nginx"
+    chart: "ingress-nginx/ingress-nginx"
+    version: "4.0.9"
+    wait: true
+    values:
+      - values.yaml

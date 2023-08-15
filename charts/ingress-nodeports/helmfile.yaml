@@ -1,0 +1,9 @@
+---
+bases:
+  - ../helmfile-values.yaml
+---
+releases:
+  - name: "ingress-nodeports"
+    namespace: {{ .Values.Namespace }}
+    chart: ./chart
+    wait: true

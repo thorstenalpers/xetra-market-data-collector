@@ -1,0 +1,14 @@
+#apiVersion: v1
+#kind: PersistentVolume
+#metadata:
+#  name: selenium-download-data-volume
+#  labels:
+#    type: local
+#spec:
+#  storageClassName: manual
+#  capacity:
+#    storage: 100M
+#  accessModes:
+#    - ReadWriteOnce
+#  hostPath:
+#    path: "/mnt/selenium-download-data"

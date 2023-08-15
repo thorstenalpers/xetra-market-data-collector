@@ -1,0 +1,1 @@
+kubectl scale deploy tradex-marketdata  --replicas=0

@@ -1,0 +1,140 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33516.290
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{44853084-8316-4342-9A01-C3D5DB6AEED7}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		..\README.md = ..\README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Charts", "Charts", "{7BFD95B7-DF98-4B5F-8035-38B67219F7CE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "event-publisher", "event-publisher", "{A39FD440-BC14-435B-B5EE-385E4FEE1788}"
+	ProjectSection(SolutionItems) = preProject
+		..\charts\tradex-event-publisher\Chart.yaml = ..\charts\tradex-event-publisher\Chart.yaml
+		..\charts\tradex-event-publisher\values.yaml = ..\charts\tradex-event-publisher\values.yaml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "templates", "templates", "{99827DA5-0F63-4278-84F4-82FBD62E9A01}"
+	ProjectSection(SolutionItems) = preProject
+		..\charts\tradex-event-publisher\templates\deployment.yaml = ..\charts\tradex-event-publisher\templates\deployment.yaml
+		..\charts\tradex-event-publisher\templates\hpa.yaml = ..\charts\tradex-event-publisher\templates\hpa.yaml
+		..\charts\tradex-event-publisher\templates\ingress.yaml = ..\charts\tradex-event-publisher\templates\ingress.yaml
+		..\charts\tradex-event-publisher\templates\pvc-claim.yaml = ..\charts\tradex-event-publisher\templates\pvc-claim.yaml
+		..\charts\tradex-event-publisher\templates\pvc-volume.yaml = ..\charts\tradex-event-publisher\templates\pvc-volume.yaml
+		..\charts\tradex-event-publisher\templates\service.yaml = ..\charts\tradex-event-publisher\templates\service.yaml
+		..\charts\tradex-event-publisher\templates\serviceaccount.yaml = ..\charts\tradex-event-publisher\templates\serviceaccount.yaml
+		..\charts\tradex-event-publisher\templates\_helpers.tpl = ..\charts\tradex-event-publisher\templates\_helpers.tpl
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{FC695385-FA09-44BB-90E9-AA0170D6E1E2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "market-data", "market-data", "{03B130CF-3671-4C4A-8F15-DE4DEB2F2B10}"
+	ProjectSection(SolutionItems) = preProject
+		..\charts\tradex-marketdata\Chart.yaml = ..\charts\tradex-marketdata\Chart.yaml
+		..\charts\tradex-marketdata\values.yaml = ..\charts\tradex-marketdata\values.yaml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "templates", "templates", "{A693C834-ADF7-4BF1-B683-1CEBF8E82B52}"
+	ProjectSection(SolutionItems) = preProject
+		..\charts\tradex-marketdata\templates\deployment.yaml = ..\charts\tradex-marketdata\templates\deployment.yaml
+		..\charts\tradex-marketdata\templates\hpa.yaml = ..\charts\tradex-marketdata\templates\hpa.yaml
+		..\charts\tradex-marketdata\templates\ingress.yaml = ..\charts\tradex-marketdata\templates\ingress.yaml
+		..\charts\tradex-marketdata\templates\pvc-claim.yaml = ..\charts\tradex-marketdata\templates\pvc-claim.yaml
+		..\charts\tradex-marketdata\templates\pvc-volume.yaml = ..\charts\tradex-marketdata\templates\pvc-volume.yaml
+		..\charts\tradex-marketdata\templates\service.yaml = ..\charts\tradex-marketdata\templates\service.yaml
+		..\charts\tradex-marketdata\templates\serviceaccount.yaml = ..\charts\tradex-marketdata\templates\serviceaccount.yaml
+		..\charts\tradex-marketdata\templates\_helpers.tpl = ..\charts\tradex-marketdata\templates\_helpers.tpl
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared", "Shared\Shared.csproj", "{E794B1CC-04E3-4927-8669-AD3DA2E91FEA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventPublisher", "EventPublisher\EventPublisher.csproj", "{6DC4C563-BA00-4CD3-8B6C-29511960001A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{8ED66D77-5755-470C-B7D6-4D4D2AFE07F1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EventPublisher", "EventPublisher", "{0BD9B324-BCCE-4A5E-8F55-D2F9CD69B39E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MarketData", "MarketData", "{25FBC3E0-1BC0-4BEA-9A18-3E621A85D116}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MarketData.API", "MarketData\MarketData.API\MarketData.API.csproj", "{D2B3383B-E4B4-4011-92B5-C37202199990}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{214651EE-A9D4-49F3-BD8A-947C33940305}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MarketData.UnitTests", "MarketData\MarketData.UnitTests\MarketData.UnitTests.csproj", "{C606267C-C021-4E1A-A458-5235379D3C28}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MarketData.FunctionalTests", "MarketData\MarketData.FunctionalTests\MarketData.FunctionalTests.csproj", "{D9CFA657-24A6-4EAE-A7FF-62208D7E97C8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MarketData.Application", "MarketData\MarketData.Application\MarketData.Application.csproj", "{F62C1D78-1D28-499A-A77E-9CD9EC531C2B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MarketData.Domain", "MarketData\MarketData.Domain\MarketData.Domain.csproj", "{B8B59C0F-C342-461A-966D-9B63A24E8C81}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MarketData.Infratructure", "MarketData\MarketData.Infratructure\MarketData.Infratructure.csproj", "{307FFBCC-D3A6-44FB-B1DC-2825055F52EF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E794B1CC-04E3-4927-8669-AD3DA2E91FEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E794B1CC-04E3-4927-8669-AD3DA2E91FEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E794B1CC-04E3-4927-8669-AD3DA2E91FEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E794B1CC-04E3-4927-8669-AD3DA2E91FEA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6DC4C563-BA00-4CD3-8B6C-29511960001A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6DC4C563-BA00-4CD3-8B6C-29511960001A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6DC4C563-BA00-4CD3-8B6C-29511960001A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6DC4C563-BA00-4CD3-8B6C-29511960001A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2B3383B-E4B4-4011-92B5-C37202199990}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2B3383B-E4B4-4011-92B5-C37202199990}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2B3383B-E4B4-4011-92B5-C37202199990}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2B3383B-E4B4-4011-92B5-C37202199990}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C606267C-C021-4E1A-A458-5235379D3C28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C606267C-C021-4E1A-A458-5235379D3C28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C606267C-C021-4E1A-A458-5235379D3C28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C606267C-C021-4E1A-A458-5235379D3C28}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9CFA657-24A6-4EAE-A7FF-62208D7E97C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9CFA657-24A6-4EAE-A7FF-62208D7E97C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9CFA657-24A6-4EAE-A7FF-62208D7E97C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9CFA657-24A6-4EAE-A7FF-62208D7E97C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F62C1D78-1D28-499A-A77E-9CD9EC531C2B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F62C1D78-1D28-499A-A77E-9CD9EC531C2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F62C1D78-1D28-499A-A77E-9CD9EC531C2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F62C1D78-1D28-499A-A77E-9CD9EC531C2B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8B59C0F-C342-461A-966D-9B63A24E8C81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8B59C0F-C342-461A-966D-9B63A24E8C81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8B59C0F-C342-461A-966D-9B63A24E8C81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8B59C0F-C342-461A-966D-9B63A24E8C81}.Release|Any CPU.Build.0 = Release|Any CPU
+		{307FFBCC-D3A6-44FB-B1DC-2825055F52EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{307FFBCC-D3A6-44FB-B1DC-2825055F52EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{307FFBCC-D3A6-44FB-B1DC-2825055F52EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{307FFBCC-D3A6-44FB-B1DC-2825055F52EF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{7BFD95B7-DF98-4B5F-8035-38B67219F7CE} = {44853084-8316-4342-9A01-C3D5DB6AEED7}
+		{A39FD440-BC14-435B-B5EE-385E4FEE1788} = {7BFD95B7-DF98-4B5F-8035-38B67219F7CE}
+		{99827DA5-0F63-4278-84F4-82FBD62E9A01} = {A39FD440-BC14-435B-B5EE-385E4FEE1788}
+		{03B130CF-3671-4C4A-8F15-DE4DEB2F2B10} = {7BFD95B7-DF98-4B5F-8035-38B67219F7CE}
+		{A693C834-ADF7-4BF1-B683-1CEBF8E82B52} = {03B130CF-3671-4C4A-8F15-DE4DEB2F2B10}
+		{E794B1CC-04E3-4927-8669-AD3DA2E91FEA} = {8ED66D77-5755-470C-B7D6-4D4D2AFE07F1}
+		{6DC4C563-BA00-4CD3-8B6C-29511960001A} = {0BD9B324-BCCE-4A5E-8F55-D2F9CD69B39E}
+		{8ED66D77-5755-470C-B7D6-4D4D2AFE07F1} = {FC695385-FA09-44BB-90E9-AA0170D6E1E2}
+		{0BD9B324-BCCE-4A5E-8F55-D2F9CD69B39E} = {FC695385-FA09-44BB-90E9-AA0170D6E1E2}
+		{25FBC3E0-1BC0-4BEA-9A18-3E621A85D116} = {FC695385-FA09-44BB-90E9-AA0170D6E1E2}
+		{D2B3383B-E4B4-4011-92B5-C37202199990} = {25FBC3E0-1BC0-4BEA-9A18-3E621A85D116}
+		{214651EE-A9D4-49F3-BD8A-947C33940305} = {25FBC3E0-1BC0-4BEA-9A18-3E621A85D116}
+		{C606267C-C021-4E1A-A458-5235379D3C28} = {214651EE-A9D4-49F3-BD8A-947C33940305}
+		{D9CFA657-24A6-4EAE-A7FF-62208D7E97C8} = {214651EE-A9D4-49F3-BD8A-947C33940305}
+		{F62C1D78-1D28-499A-A77E-9CD9EC531C2B} = {25FBC3E0-1BC0-4BEA-9A18-3E621A85D116}
+		{B8B59C0F-C342-461A-966D-9B63A24E8C81} = {25FBC3E0-1BC0-4BEA-9A18-3E621A85D116}
+		{307FFBCC-D3A6-44FB-B1DC-2825055F52EF} = {25FBC3E0-1BC0-4BEA-9A18-3E621A85D116}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {056A82C1-9AAA-4AF3-ACC5-665818CA52B2}
+	EndGlobalSection
+EndGlobal

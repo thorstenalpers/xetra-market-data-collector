@@ -1,0 +1,11 @@
+---
+bases:
+  - ../helmfile-values.yaml
+---
+releases:
+  - name: "jupyterlab"
+    namespace: {{ .Values.Namespace }}
+    chart: ./chart
+    wait: true
+    values:
+      - values.yaml
