@@ -72,7 +72,7 @@ public class AssetController : ControllerBase
     /// <summary>
     /// Creates or updates the asset metric records by downloading historical data from Yahoo.com and then calculating metrics
     /// </summary>
-    /// <param name="symbols">all if empty, e.g. SAP.DE</param>
+    /// <param name="symbols">e.g. SAP.DE, all if empty</param>
     /// <param name="startDate">Start date for the historical data</param>
     /// <param name="endDate">Now, if empty</param>
     [HttpPost]
