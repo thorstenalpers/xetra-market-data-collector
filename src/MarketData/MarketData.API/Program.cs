@@ -14,12 +14,12 @@ using Newtonsoft.Json.Converters;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.Extensions.Options;
-using MarketData.Infratructure.Mappings;
-using MarketData.Infratructure.Options;
-using MarketData.Infratructure.Services;
-using MarketData.Infratructure;
 using MarketData.Application.Extensions;
 using MarketData.Domain.Repositories;
+using MarketData.Infrastructure;
+using MarketData.Infrastructure.Options;
+using MarketData.Infrastructure.Mappings;
+using MarketData.Infrastructure.Services;
 
 public class Program
 {

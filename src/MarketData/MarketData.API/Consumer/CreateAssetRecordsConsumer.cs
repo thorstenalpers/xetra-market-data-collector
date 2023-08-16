@@ -3,7 +3,7 @@
 using MarketData.Application.Services.Interfaces;
 using MarketData.Domain.Entities;
 using MarketData.Domain.Repositories;
-using MarketData.Infratructure;
+using MarketData.Infrastructure;
 using MassTransit;
 using Newtonsoft.Json;
 using Shared.Events;

@@ -8,9 +8,9 @@ using MarketData.Domain.Repositories;
 using MarketData.Domain.Services.Interfaces;
 using MarketData.Domain.Specifications;
 using MarketData.Domain.ValueObjects;
-using MarketData.Infratructure;
-using MarketData.Infratructure.Options;
-using MarketData.Infratructure.Services;
+using MarketData.Infrastructure;
+using MarketData.Infrastructure.Options;
+using MarketData.Infrastructure.Services;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using System;
@@ -73,14 +73,20 @@ public class AssetsService : IAssetsService, IScopedService
         var symbolsAndTypes = validAssets.Select(e => (e.Symbol, e.Type)).ToList();
 
         // 1. try to get the meta data by symbol
-        var lsMetaData = await GetMetaDataBySymbolAsync(symbolsAndTypes);
+        var lsMetaDataBySymbol = await GetMetaDataBySymbolAsync(symbolsAndTypes);
         var assetsWithoutMetaData = validAssets
-            .Where(e => !lsMetaData.Any(t => t.Symbol == e.Symbol))
+            .Where(e => !lsMetaDataBySymbol.Any(t => t.Symbol == e.Symbol))
             .ToList();
-        var isinsWithoutMetaData = assetsWithoutMetaData.Select(e => e.Isin).ToList();
-        _logger.LogInformation($"Found {lsMetaData.Count} metadata by symbol");
+        var isinsAndTypesWithoutMetaData = assetsWithoutMetaData.Select(e => (e.Isin, e.Type)).ToList();
+        _logger.LogInformation($"Found {lsMetaDataBySymbol.Count} metadata by symbol");
 
-        foreach (var metaData in lsMetaData)
+        // 2. try to get the meta data by isin
+        //var isinsAndTypes = validAssets.Select(e => (e.Isin, e.Type)).ToList();
+        //var lsMetaDataByIsin = await GetMetaDataByIsinAsync(isinsAndTypes);
+        //_logger.LogInformation($"Found {lsMetaDataByIsin.Count} metadata by isin");
+
+        var allMetaData = lsMetaDataBySymbol;//.Concat(lsMetaDataByIsin);
+        foreach (var metaData in allMetaData)
         {
             var validAsset = validAssets.FirstOrDefault(e => e.Symbol == metaData.Symbol);
             var asset = _mapper.Map(metaData, validAsset);
@@ -113,6 +119,31 @@ public class AssetsService : IAssetsService, IScopedService
         }
         var result = await Task.WhenAll(tasks);
         return result.SelectMany(list => list).ToList();
+    }
+
+    private async Task<List<AssetMetaData>> GetMetaDataByIsinAsync(List<(string Isin, EAssetType Type)> isinsAndTypes)
+    {
+        var tasks = new List<Task<List<(string isin, string symbol)>>>();
+        var isins = isinsAndTypes.Select(e => e.Isin).ToList();
+        var lsSymbolsAndTypes = isins.SplitIntoEqualSizedChunks(_seleniumOptions.MaxParallelism);
+        foreach (var items in lsSymbolsAndTypes)
+        {
+            tasks.Add(Task.Run(() =>
+            {
+                return _yahooWebScraper.GetSymbolsByIsin(items);
+            }));
+        }
+        List<(string isin, string symbol)>[] lsIsinsAndSymbols = await Task.WhenAll(tasks);
+        var isinsAndSymbols = lsIsinsAndSymbols.SelectMany(e => e).ToList();
+
+        var symbolAndTypes = isinsAndSymbols
+            .Join(isinsAndTypes,
+                  isinSymbol => isinSymbol.isin,
+                  isinAssetType => isinAssetType.Isin,
+                  (isinSymbol, isinAssetType) => (Symbol: isinSymbol.symbol, TradingAssetType: isinAssetType.Type))
+            .ToList();
+
+        return await GetMetaDataBySymbolAsync(symbolAndTypes);
     }
 
     public async Task<int> DeleteAssets(int daysWithNoCourses)

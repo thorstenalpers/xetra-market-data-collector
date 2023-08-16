@@ -3,8 +3,8 @@
 using MarketData.Application.Services.Interfaces;
 using MarketData.Domain.Repositories;
 using MarketData.Domain.Services.Interfaces;
-using MarketData.Infratructure;
-using MarketData.Infratructure.Services;
+using MarketData.Infrastructure;
+using MarketData.Infrastructure.Services;
 using Microsoft.Extensions.DependencyInjection;
 
 public static class ServiceCollectionExtensions

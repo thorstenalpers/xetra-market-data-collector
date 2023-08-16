@@ -7,7 +7,7 @@ using MarketData.Domain.Exceptions;
 using MarketData.Domain.Repositories;
 using MarketData.Domain.Services.Interfaces;
 using MarketData.Domain.Specifications;
-using MarketData.Infratructure.Services;
+using MarketData.Infrastructure.Services;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
