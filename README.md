@@ -19,7 +19,7 @@ The graphical user interface to view the data is Apache Superset.
 ## Installation
 
 1. Run ".\scripts\deploy-infrastructure.cmd", all dependent infrastructure components will be deployt 
-1. Run ".\scripts\deploy-service-event-publisher.cmd", builds and deploys the event publisher, used to publish events to RabbitMQ
+1. Run ".\scripts\deploy-service-event-publisher.cmd", builds and deploys the event publisher, used to publish events to RabbitMQ which will then consumed by marketdata service
 1. Run ".\scripts\deploy-service-marketdata.cmd", that will build and deploy the main microservice which collects all the data
 1. Run ".\scripts\install-nginx-with-ssl-cert\create-and-deploy-ssl-certificate.cmd", it will create an SSL certificate and deploy it to nginx in kubernetes
 1. Modify "C:\Windows\System32\drivers\etc\hosts" and add following entries, with that you will can use URL domain names instead of IP adresses to access the local kubernetes cluster
@@ -43,13 +43,13 @@ Password: admin
 
 1. Click import dashboard (icon in the upper right corner) and choose file ".\dashboard_export_20230816T073431.zip"
 2. Password for the database is "admin", which can also be found in ".\src\MarketData\MarketData.API\appsettings.json"
+
+
 ![Superset](./screenshots/Superset.gif)
 
 ### Event Publisher (SwaggerUI) - to trigger events to RabbitMQ which will download and store financial assest or updates historical courses
 
 * Url: https://event-publisher.tradex/swagger/index.html
-Username: admin
-Password: admin
 
 ![SwaggerUI](./screenshots/SwaggerUI.png)
 
