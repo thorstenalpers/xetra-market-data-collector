@@ -1,10 +1,12 @@
-﻿using MarketData.Infrastructure.Services;
+﻿using MarketData.Infrastructure.Options;
+using MarketData.Infrastructure.Services;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Moq;
 using NUnit.Framework;
 using System;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace MarketData.Infrastructure.Tests.Services;
