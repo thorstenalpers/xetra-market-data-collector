@@ -72,7 +72,6 @@ public class AssetsService : IAssetsService, IScopedService
 
         var symbolsAndTypes = validAssets.Select(e => (e.Symbol, e.Type)).ToList();
 
-        // 1. try to get the meta data by symbol
         var lsMetaDataBySymbol = await GetMetaDataBySymbolAsync(symbolsAndTypes);
         var assetsWithoutMetaData = validAssets
             .Where(e => !lsMetaDataBySymbol.Any(t => t.Symbol == e.Symbol))
@@ -80,12 +79,7 @@ public class AssetsService : IAssetsService, IScopedService
         var isinsAndTypesWithoutMetaData = assetsWithoutMetaData.Select(e => (e.Isin, e.Type)).ToList();
         _logger.LogInformation($"Found {lsMetaDataBySymbol.Count} metadata by symbol");
 
-        // 2. try to get the meta data by isin
-        //var isinsAndTypes = validAssets.Select(e => (e.Isin, e.Type)).ToList();
-        //var lsMetaDataByIsin = await GetMetaDataByIsinAsync(isinsAndTypes);
-        //_logger.LogInformation($"Found {lsMetaDataByIsin.Count} metadata by isin");
-
-        var allMetaData = lsMetaDataBySymbol;//.Concat(lsMetaDataByIsin);
+        var allMetaData = lsMetaDataBySymbol;
         foreach (var metaData in allMetaData)
         {
             var validAsset = validAssets.FirstOrDefault(e => e.Symbol == metaData.Symbol);
@@ -119,31 +113,6 @@ public class AssetsService : IAssetsService, IScopedService
         }
         var result = await Task.WhenAll(tasks);
         return result.SelectMany(list => list).ToList();
-    }
-
-    private async Task<List<AssetMetaData>> GetMetaDataByIsinAsync(List<(string Isin, EAssetType Type)> isinsAndTypes)
-    {
-        var tasks = new List<Task<List<(string isin, string symbol)>>>();
-        var isins = isinsAndTypes.Select(e => e.Isin).ToList();
-        var lsSymbolsAndTypes = isins.SplitIntoEqualSizedChunks(_seleniumOptions.MaxParallelism);
-        foreach (var items in lsSymbolsAndTypes)
-        {
-            tasks.Add(Task.Run(() =>
-            {
-                return _yahooWebScraper.GetSymbolsByIsin(items);
-            }));
-        }
-        List<(string isin, string symbol)>[] lsIsinsAndSymbols = await Task.WhenAll(tasks);
-        var isinsAndSymbols = lsIsinsAndSymbols.SelectMany(e => e).ToList();
-
-        var symbolAndTypes = isinsAndSymbols
-            .Join(isinsAndTypes,
-                  isinSymbol => isinSymbol.isin,
-                  isinAssetType => isinAssetType.Isin,
-                  (isinSymbol, isinAssetType) => (Symbol: isinSymbol.symbol, TradingAssetType: isinAssetType.Type))
-            .ToList();
-
-        return await GetMetaDataBySymbolAsync(symbolAndTypes);
     }
 
     public async Task<int> DeleteAssets(int daysWithNoCourses)
