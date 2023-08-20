@@ -120,7 +120,7 @@ public class AssetsService : IAssetsService, IScopedService
         foreach (var asset in assets)
         {
             var startDate = DateTime.UtcNow.AddDays(-daysWithNoCourses).Date;
-            var spec = new AssetRecordsAfterDateSpecification(asset.Id, startDate);
+            var spec = new AssetRecordSpec_ByFirstDate(asset.Id, startDate);
             var records = await _assetRecordRepository.ListAsync(spec);
 
             if (!records.Any())
@@ -129,7 +129,7 @@ public class AssetsService : IAssetsService, IScopedService
         var cnt = assetsToDelete.Count;
         foreach (var asset in assetsToDelete)
         {
-            var spec = new AssetRecordsByIdSpecification(asset.Id);
+            var spec = new AssetRecordSpec_ByAssetId(asset.Id);
             var recordsToDelete = await _assetRecordRepository.ListAsync(spec);
             await _assetRecordRepository.DeleteRangeAsync(recordsToDelete);
         }

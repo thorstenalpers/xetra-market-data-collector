@@ -2,10 +2,11 @@
 
 using Ardalis.Specification;
 using MarketData.Application.Entities;
+using MarketData.Application.ValueObjects;
 
-public class AssetRecordsByIdSpecification : Specification<AssetRecord>
+public class AssetRecordSpec_ByAssetId : Specification<AssetRecord>
 {
-    public AssetRecordsByIdSpecification(int assetId)
+    public AssetRecordSpec_ByAssetId(int assetId, bool includeTracking = false)
     {
         Query
             .Where(e => e.AssetId == assetId);

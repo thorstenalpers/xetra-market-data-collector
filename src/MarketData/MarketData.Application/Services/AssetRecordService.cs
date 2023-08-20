@@ -54,7 +54,7 @@ public class AssetRecordService : IAssetRecordService, IScopedService
             var records = _courseMetricsCalculator.TransformToRecordsAsync(asset, courses, startDate);
             try
             {
-                var spec = new AssetRecordsAfterDateSpecification(asset.Id, startDate);
+                var spec = new AssetRecordSpec_ByFirstDate(asset.Id, startDate);
                 var existingRecords = await _assetRecordRepository.ListAsync(spec);
                 await _assetRecordRepository.DeleteRangeAsync(existingRecords);
 

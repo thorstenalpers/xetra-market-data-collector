@@ -17,8 +17,6 @@ public class CourseMetricsCalculator : ICourseMetricsCalculator, IScopedService
         Guard.Against.NullOrEmpty(courses);
         var recordsToAdd = new List<AssetRecord>();
 
-        var spec = new LastAssetRecordSpecification(asset.Id, EAssetMetricType.PriceClose, startDate.AddDays(-1).Date);
-
         courses = courses.OrderBy(e => e.Date).ToList();
 
         foreach (var course in courses)
