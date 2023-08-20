@@ -85,8 +85,6 @@ public class Program
         builder.Services.AddScoped(typeof(IReadRepository<>), typeof(EfRepository<>));
 
         services.AddApplicationServices();
-        services.AddInfrastructureServices();
-        services.AddDomainServices();
 
         services.AddDbContext<MarketDataDbContext>(
             dbContextOptions =>

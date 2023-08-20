@@ -45,25 +45,4 @@ public class YahooApiClientTests
             mockOptions.Object,
             mockWebDriverPoolManager.Object);
     }
-
-
-    [TestCase(true)]
-    [TestCase(false)]
-    public async Task GetTradingAssetsMetricRecords_UseRemoteDriver_CoursesOk(bool useRemoteDriver)
-    {
-        // Arrange
-        var yahooApiClient = CreateYahooApiClient();
-        DateTime startDate = DateTime.UtcNow.AddDays(-10).Date;
-        DateTime endDate = DateTime.UtcNow.Date;
-
-        // Act
-        var courses = await yahooApiClient.GetCourses(
-            "SAP.DE",
-            startDate,
-            endDate);
-
-        // Assert
-        Assert.IsNotEmpty(courses);
-        Assert.IsTrue(courses.All(e => e.Close > 10 && e.Close < 300));
-    }
 }

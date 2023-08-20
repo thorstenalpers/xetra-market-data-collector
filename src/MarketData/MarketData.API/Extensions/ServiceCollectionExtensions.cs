@@ -5,6 +5,7 @@ using MarketData.Application.Repositories;
 using MarketData.Infrastructure.Repositories;
 using MarketData.Infrastructure.Services;
 using Microsoft.Extensions.DependencyInjection;
+using System.Reflection;
 
 public static class ServiceCollectionExtensions
 {
@@ -16,74 +17,26 @@ public static class ServiceCollectionExtensions
 
     public static void AddApplicationServices(this IServiceCollection services)
     {
-        var assembly = typeof(IAssetsService).Assembly;
-        var appNamespace = typeof(IAssetsService).Namespace;
-        var allTypes = assembly
-            .GetTypes()
-            .ToList();
+        var assemblies = AppDomain.CurrentDomain.GetAssemblies();
 
-        foreach (var type in allTypes)
+        foreach (Assembly assembly in assemblies)
         {
-            var interfaceType = type.GetInterfaces().FirstOrDefault(e => e.Name == "I" + type.Name);
-            if (interfaceType != null)
+            var allTypes = assembly
+                .GetTypes()
+                .ToList();
+            foreach (var type in allTypes)
             {
-                if (typeof(ISingletonService).IsAssignableFrom(type))
+                var interfaceType = type.GetInterfaces().FirstOrDefault(e => e.Name == "I" + type.Name);
+                if (interfaceType != null)
                 {
-                    services.AddSingleton(interfaceType, type);
-                }
-                else if (typeof(IScopedService).IsAssignableFrom(type))
-                {
-                    services.AddScoped(interfaceType, type);
-                }
-            }
-        }
-    }
-
-    public static void AddDomainServices(this IServiceCollection services)
-    {
-        var assembly = typeof(IMathService).Assembly;
-        var appNamespace = typeof(IMathService).Namespace;
-        var allTypes = assembly
-            .GetTypes()
-            .ToList();
-
-        foreach (var type in allTypes)
-        {
-            var interfaceType = type.GetInterfaces().FirstOrDefault(e => e.Name == "I" + type.Name);
-            if (interfaceType != null)
-            {
-                if (typeof(ISingletonService).IsAssignableFrom(type))
-                {
-                    services.AddSingleton(interfaceType, type);
-                }
-                else if (typeof(IScopedService).IsAssignableFrom(type))
-                {
-                    services.AddScoped(interfaceType, type);
-                }
-            }
-        }
-    }
-
-    public static void AddInfrastructureServices(this IServiceCollection services)
-    {
-        var assembly = typeof(YahooWebScraper).Assembly;
-        var appNamespace = typeof(YahooWebScraper).Namespace;
-        var allTypes = assembly
-            .GetTypes()
-            .ToList();
-
-        foreach (var type in allTypes)
-        {
-            var interfaceType = type.GetInterfaces().FirstOrDefault(e => e.Name == "I" + type.Name);
-            if (interfaceType != null)
-            {
-                if (typeof(ISingletonService).IsAssignableFrom(type))
-                {
-                    services.AddSingleton(interfaceType, type);
-                }
-                else if (typeof(IScopedService).IsAssignableFrom(type))
-                {
-                    services.AddScoped(interfaceType, type);
+                    if (typeof(ISingletonService).IsAssignableFrom(type))
+                    {
+                        services.AddSingleton(interfaceType, type);
+                    }
+                    else if (typeof(IScopedService).IsAssignableFrom(type))
+                    {
+                        services.AddScoped(interfaceType, type);
+                    }
                 }
             }
         }

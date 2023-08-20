@@ -46,8 +46,6 @@ public class ServiceCollectionExtensionsTests
         var options = new DbContextOptionsBuilder<MarketDataDbContext>()
             .UseInMemoryDatabase(databaseName: "TradeX")
             .Options;
-        services.AddDomainServices();
-        services.AddInfrastructureServices();
         services.AddRepositories();
         services.AddLogging();
         services.AddScoped(_ => new Mock<MarketDataDbContext>(options).Object);
@@ -92,21 +90,4 @@ public class ServiceCollectionExtensionsTests
     //    var service = serviceProvider.GetRequiredService<IInstrumentDomainService>();
     //    Assert.NotNull(service);
     //}
-
-    [Test]
-    public void AddInfrastructureServices_Added()
-    {
-        // Arrange
-        var services = new ServiceCollection();
-        services.AddScoped(_ => new Mock<IHttpClientFactory>().Object);
-        services.AddScoped(_ => new Mock<IOptions<XetraOptions>>().Object);
-
-        // Act
-        services.AddInfrastructureServices();
-
-        // Assert
-        var serviceProvider = services.BuildServiceProvider();
-        var xetraApiClient = serviceProvider.GetRequiredService<IXetraWebScraper>();
-        Assert.NotNull(xetraApiClient);
-    }
 }
