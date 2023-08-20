@@ -1,4 +1,5 @@
 ﻿using AutoBogus;
+using MarketData.Application.Extensions;
 using NUnit.Framework;
 using System.Collections.Generic;
 using System.Linq;

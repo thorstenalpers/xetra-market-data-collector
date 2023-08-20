@@ -2,15 +2,13 @@
 
 using Ardalis.GuardClauses;
 using AutoMapper;
-using MarketData.Application.Services.Interfaces;
-using MarketData.Domain.Entities;
-using MarketData.Domain.Repositories;
-using MarketData.Domain.Services.Interfaces;
-using MarketData.Domain.Specifications;
-using MarketData.Domain.ValueObjects;
-using MarketData.Infrastructure;
-using MarketData.Infrastructure.Options;
-using MarketData.Infrastructure.Services;
+using MarketData.Application.Entities;
+using MarketData.Application.Extensions;
+using MarketData.Application.Interfaces;
+using MarketData.Application.Options;
+using MarketData.Application.Repositories;
+using MarketData.Application.Specifications;
+using MarketData.Application.ValueObjects;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using System;

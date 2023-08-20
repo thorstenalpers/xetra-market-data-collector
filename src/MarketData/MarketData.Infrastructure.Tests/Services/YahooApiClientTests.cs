@@ -1,4 +1,5 @@
-﻿using MarketData.Infrastructure.Options;
+﻿using MarketData.Application.Interfaces;
+using MarketData.Application.Options;
 using MarketData.Infrastructure.Services;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;

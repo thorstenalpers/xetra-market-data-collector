@@ -11,15 +11,16 @@ using Microsoft.AspNetCore.Builder;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using Newtonsoft.Json.Converters;
+using Microsoft.Extensions.Options;
+using MarketData.Application.Repositories;
+using MarketData.Application.Options;
+using MarketData.API.Extensions;
+using MarketData.Infrastructure.Mappings;
+using MarketData.Infrastructure;
+using MarketData.Infrastructure.Repositories;
+using MarketData.Application.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Migrations;
-using Microsoft.Extensions.Options;
-using MarketData.Application.Extensions;
-using MarketData.Domain.Repositories;
-using MarketData.Infrastructure;
-using MarketData.Infrastructure.Options;
-using MarketData.Infrastructure.Mappings;
-using MarketData.Infrastructure.Services;
 
 public class Program
 {

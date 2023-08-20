@@ -2,7 +2,7 @@
 
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore;
-using MarketData.Domain.Entities;
+using MarketData.Application.Entities;
 
 public class AssetRecordConfiguration : IEntityTypeConfiguration<AssetRecord>
 {

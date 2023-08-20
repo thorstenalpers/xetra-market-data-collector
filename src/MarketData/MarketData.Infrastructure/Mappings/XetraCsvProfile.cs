@@ -1,9 +1,8 @@
 ﻿namespace MarketData.Infrastructure.Mappings;
 
 using AutoMapper;
-using MarketData.Domain.Entities;
-using MarketData.Domain.ValueObjects;
-using MarketData.Infrastructure.Services.Models;
+using MarketData.Application.Entities;
+using MarketData.Application.ValueObjects;
 
 public class XetraCsvProfile : Profile
 {

@@ -2,10 +2,11 @@
 
 using CsvHelper;
 using CsvHelper.Configuration;
-using MarketData.Domain.Exceptions;
-using MarketData.Domain.Repositories;
-using MarketData.Infrastructure.Options;
-using MarketData.Infrastructure.Services.Models;
+using MarketData.Application.Exceptions;
+using MarketData.Application.Interfaces;
+using MarketData.Application.Options;
+using MarketData.Application.Repositories;
+using MarketData.Application.ValueObjects;
 using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
@@ -13,11 +14,6 @@ using System.Globalization;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
-
-public interface IXetraWebScraper
-{
-    public Task<List<XetraCsvEntry>> GetTradableInstruments();
-}
 
 public class XetraWebScraper : IXetraWebScraper, IScopedService
 {

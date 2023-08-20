@@ -1,6 +1,6 @@
 ﻿namespace MarketData.Infrastructure.Tests.Services;
 
-using MarketData.Infrastructure.Services;
+using MarketData.Application.Extensions;
 using NUnit.Framework;
 
 [TestFixture]

@@ -1,13 +1,13 @@
 ﻿namespace MarketData.API.Consumer;
 
-using MarketData.Application.Services.Interfaces;
-using MarketData.Domain.Entities;
-using MarketData.Domain.Repositories;
-using MarketData.Infrastructure;
+using MarketData.Application.Entities;
+using MarketData.Application.Interfaces;
+using MarketData.Application.Repositories;
 using MassTransit;
 using Newtonsoft.Json;
 using Shared.Events;
 using System.Threading.Tasks;
+using MarketData.Application.Extensions;
 
 public class CreateAssetRecordsConsumer : IConsumer<CreateAssetRecordsRequested>
 {

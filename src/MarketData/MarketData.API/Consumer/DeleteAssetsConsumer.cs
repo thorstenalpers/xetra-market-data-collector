@@ -1,6 +1,6 @@
 ﻿namespace MarketData.API.Consumer;
 
-using MarketData.Application.Services.Interfaces;
+using MarketData.Application.Interfaces;
 using MassTransit;
 using Newtonsoft.Json;
 using Shared.Events;

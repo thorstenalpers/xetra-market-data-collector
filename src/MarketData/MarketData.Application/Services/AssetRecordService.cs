@@ -1,13 +1,11 @@
 ﻿namespace MarketData.Application.Services;
 
 using Ardalis.GuardClauses;
-using MarketData.Application.Services.Interfaces;
-using MarketData.Domain.Entities;
-using MarketData.Domain.Exceptions;
-using MarketData.Domain.Repositories;
-using MarketData.Domain.Services.Interfaces;
-using MarketData.Domain.Specifications;
-using MarketData.Infrastructure.Services;
+using MarketData.Application.Entities;
+using MarketData.Application.Exceptions;
+using MarketData.Application.Interfaces;
+using MarketData.Application.Repositories;
+using MarketData.Application.Specifications;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;

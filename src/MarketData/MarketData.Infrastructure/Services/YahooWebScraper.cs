@@ -1,11 +1,12 @@
 ﻿namespace MarketData.Infrastructure.Services;
 
 using CsvHelper;
-using MarketData.Domain.Exceptions;
-using MarketData.Domain.Repositories;
-using MarketData.Domain.ValueObjects;
-using MarketData.Infrastructure.Options;
-using MarketData.Infrastructure.Services.Models;
+using MarketData.Application.Exceptions;
+using MarketData.Application.Extensions;
+using MarketData.Application.Interfaces;
+using MarketData.Application.Options;
+using MarketData.Application.Repositories;
+using MarketData.Application.ValueObjects;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using OpenQA.Selenium;
@@ -20,13 +21,6 @@ using System.Net;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web;
-
-public interface IYahooWebScraper
-{
-    List<AssetMetaData> GetMetaDataBySymbol(List<(string symbol, EAssetType type)> symbolsAndTypes);
-    Task<List<AssetCourse>> GetCourses(string symbol, DateTime startDate, DateTime? endDate = null);
-    List<(string isin, string symbol)> GetSymbolsByIsin(List<string> isins);
-}
 
 public class YahooWebScraper : IYahooWebScraper, IScopedService
 {

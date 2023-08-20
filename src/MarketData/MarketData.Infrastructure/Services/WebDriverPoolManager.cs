@@ -5,18 +5,11 @@ using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Remote;
 using Microsoft.Extensions.Options;
-using MarketData.Domain.Repositories;
-using MarketData.Domain.Exceptions;
-using MarketData.Infrastructure.Options;
+using MarketData.Application.Interfaces;
+using MarketData.Application.Repositories;
+using MarketData.Application.Options;
+using MarketData.Application.Exceptions;
 
-public interface IWebDriverPoolManager
-{
-    public IWebDriver GetDriver(bool enableJs, bool useRemoteDriver, Uri remoteUrl);
-    public WebDriverWait CreateWebDriverWait(IWebDriver driver, TimeSpan timeout);
-    public void RecycleDriver(IWebDriver driver);
-    public void CloseAndDisposeDriver(IWebDriver driver);
-    public void Dispose();
-}
 public class WebDriverPoolManager : IWebDriverPoolManager, IDisposable, ISingletonService
 {
     private readonly object _lock = new object();

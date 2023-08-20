@@ -3,8 +3,8 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
-using MarketData.Domain.Entities;
-using MarketData.Domain.ValueObjects;
+using MarketData.Application.Entities;
+using MarketData.Application.ValueObjects;
 
 public class AssetMetricConfiguration : IEntityTypeConfiguration<AssetMetric>
 {

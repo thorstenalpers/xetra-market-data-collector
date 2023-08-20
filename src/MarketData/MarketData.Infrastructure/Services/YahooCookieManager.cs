@@ -5,17 +5,11 @@ using Microsoft.Extensions.Options;
 using SeleniumExtras.WaitHelpers;
 using System.Net;
 using Microsoft.Extensions.Logging;
-using MarketData.Domain.Repositories;
-using MarketData.Domain.Exceptions;
-using MarketData.Infrastructure.Options;
+using MarketData.Application.Repositories;
+using MarketData.Application.Interfaces;
+using MarketData.Application.Options;
+using MarketData.Application.Exceptions;
 
-public interface IYahooCookieManager
-{
-    void InvalidateCookie(CookieContainer cookieContainer);
-    CookieContainer RenewCookie(CookieContainer cookieContainer);
-    CookieContainer GetCookie();
-    bool IsValid(CookieContainer cookieContainer);
-}
 public class YahooCookieManager : IYahooCookieManager, ISingletonService
 {
     private readonly object _lock = new object();

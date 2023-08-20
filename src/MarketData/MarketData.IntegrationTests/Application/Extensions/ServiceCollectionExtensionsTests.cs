@@ -1,11 +1,10 @@
 ﻿using AutoMapper;
-using MarketData.Application.Extensions;
-using MarketData.Application.Services.Interfaces;
-using MarketData.Domain.Entities;
-using MarketData.Domain.Repositories;
+using MarketData.API.Extensions;
+using MarketData.Application.Entities;
+using MarketData.Application.Interfaces;
+using MarketData.Application.Options;
+using MarketData.Application.Repositories;
 using MarketData.Infrastructure;
-using MarketData.Infrastructure.Options;
-using MarketData.Infrastructure.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
