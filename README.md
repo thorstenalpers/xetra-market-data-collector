@@ -1,6 +1,6 @@
 # Xetra Market Data Collector
 
-A microservice that downloads tradable stock market instruments from Xetra.com and then enriches them with metadata at Yahoo.com.  
+This plattform downloads tradable stock market instruments from Xetra.com and then enriches them with metadata at Yahoo.com.  
 Finally, the historical courses are downloaded from Yahoo.com via Selenium Firefox WebDriver and stored in a TimescaleDB database.
 The graphical user interface to view the data is Apache Superset. 
 
@@ -15,7 +15,7 @@ The graphical user interface to view the data is Apache Superset.
 
 * [Lens IDE](https://k8slens.dev/desktop.html) - Control and view the kubernets cluster including resources and logs of the pods
 * [DBeaver](https://dbeaver.io/download/) - Database client software application
-1
+
 ## Installation
 
 1. Run ".\scripts\deploy-infrastructure.cmd", all dependent infrastructure components will be deployt 
