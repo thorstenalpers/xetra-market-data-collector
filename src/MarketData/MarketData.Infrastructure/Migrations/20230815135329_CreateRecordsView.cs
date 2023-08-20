@@ -1,8 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
-
-#nullable disable
+﻿#nullable disable
 
 namespace MarketData.Infratructure.Migrations;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 /// <inheritdoc />
 public partial class CreateRecordsView : Migration

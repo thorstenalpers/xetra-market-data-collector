@@ -1,4 +1,5 @@
-﻿using MarketData.Application.Interfaces;
+﻿namespace MarketData.Infrastructure.Tests.Services;
+using MarketData.Application.Interfaces;
 using MarketData.Application.Options;
 using MarketData.Infrastructure.Services;
 using Microsoft.Extensions.Logging;
@@ -9,8 +10,6 @@ using System;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
-
-namespace MarketData.Infrastructure.Tests.Services;
 
 [TestFixture]
 [Category("UnitTests")]

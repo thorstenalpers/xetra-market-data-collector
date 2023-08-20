@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿namespace MarketData.IntegrationTests.Application.Extensions;
+using AutoMapper;
 using MarketData.API.Extensions;
 using MarketData.Application.Entities;
 using MarketData.Application.Interfaces;
@@ -11,8 +12,6 @@ using Microsoft.Extensions.Options;
 using Moq;
 using NUnit.Framework;
 using System.Net.Http;
-
-namespace MarketData.IntegrationTests.Application.Extensions;
 
 [TestFixture]
 [Category("UnitTests")]

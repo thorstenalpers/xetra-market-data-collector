@@ -1,10 +1,9 @@
-﻿using AutoBogus;
+﻿namespace MarketData.Infrastructure.Tests.Services;
+using AutoBogus;
 using MarketData.Application.Extensions;
 using NUnit.Framework;
 using System.Collections.Generic;
 using System.Linq;
-
-namespace MarketData.Infrastructure.Tests.Services;
 
 [TestFixture]
 [Category("UnitTests")]
