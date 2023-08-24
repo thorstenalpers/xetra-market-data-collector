@@ -24,7 +24,7 @@ The graphical user interface to view the data is Apache Superset.
 1. Run ".\scripts\install-nginx-with-ssl-cert\create-and-deploy-ssl-certificate.cmd", it will create an SSL certificate and deploy it to nginx in kubernetes
 1. Modify "C:\Windows\System32\drivers\etc\hosts" and add following entries, with that you will can use URL domain names instead of IP adresses to access the local kubernetes cluster
 ```
-127.0.0.1  superset.tradex selenium.tradex rabbitmq.tradex event-publisher.tradex
+127.0.0.1  superset.tradex selenium.tradex rabbitmq.tradex event-publisher.tradex jupyter.tradex
 ```
 
 1. Open https://event-publisher.tradex/swagger/index.html
@@ -59,6 +59,20 @@ Password: admin
 Password: secret
 
 ![Selenium](./screenshots/Selenium.png)
+
+### Jupyterlab
+
+* Url: https://jupyter.tradex/
+Password: secret
+
+![Jupyter](./screenshots/Jupyter.png)
+
+#### Get the authentication token
+
+1. Open Lens and navigate to Workloads->Pods and view the logs of the Jupyter pod
+2. Copy the authentication token and use it 
+   
+![Jupyter](./screenshots/Jupyter-Logs.png)
 
 ### RabbitMQ
 
